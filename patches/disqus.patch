@@ -1,0 +1,21 @@
+--- content/themes/casper/post.hbs	2017-03-01 18:06:42.000000000 +0000
++++ content/themes/casper/post.hbs	2017-03-02 09:46:54.490582931 +0000
+@@ -56,6 +56,18 @@
+ 
+         {{/author}}
+ 
++	<div id="disqus_thread"></div>
++	<script>
++
++	(function() { // DON'T EDIT BELOW THIS LINE
++	var d = document, s = d.createElement('script');
++	s.src = 'https://$DISQUS_ID.disqus.com/embed.js';
++	s.setAttribute('data-timestamp', +new Date());
++	(d.head || d.body).appendChild(s);
++	})();
++	</script>
++	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
++
+             <section class="share">
+                 <h4>Share this post</h4>
+                 <a class="icon-twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"

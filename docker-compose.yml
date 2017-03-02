@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  app:
+    image: stono/ghost:latest
+    build: ./
+    restart: always
+    environment:
+      GHOST_URL: http://127.0.0.1
+      DISQUS_ID: testing
+    volumes:
+      - ./data:/data
+    ports:
+      - 2368:2368
+
+  nginx:
+    image: stono/docker-nginx-letsencrypt:latest
+    restart: always
+    environment:
+      - HOST_KARLSTONEY=karlstoney.com,app:2368,default_server
+      - HOST_WWWKARLSTONEY=www.karlstoney.com,karlstoney.com,redirect
+      - HOST_JAMBR=jambr.co.uk,karlstoney.com,redirect
+      - HOST_WWWJAMBR=www.jambr.co.uk,karlstoney.com,redirect
+      - LETSENCRYPT_EMAIL=me@karlstoney.com
+      - LETSENCRYPT=true
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+    ports:
+      - 443:443
+      - 80:80
