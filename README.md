@@ -51,7 +51,7 @@ services:
     environment:
       - HOST_KARLSTONEY=karlstoney.com,ghost:2368,default_server
       - HOST_WWWKARLSTONEY=www.karlstoney.com,karlstoney.com,redirect
-      - LETSENCRYPT_EMAIL=me@karlstoney.com
+      - LETSENCRYPT_EMAIL=your-email@your-domain.com
       - LETSENCRYPT=true
     volumes:
       - ./letsencrypt:/etc/letsencrypt
