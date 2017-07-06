@@ -14,7 +14,7 @@ RUN yum -y -q install nodejs-6.9.* gcc-c++ make git bzip2 unzip && \
 # Configuration
 ENV GHOST_CONFIG /data/config.js
 ENV GHOST_HOME /var/www/ghost
-ENV GHOST_VERSION 0.11.7
+ENV GHOST_VERSION 0.11.10
 
 # Setup www-data user
 RUN groupadd www-data && \
