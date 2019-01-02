@@ -13,5 +13,5 @@ do
 done
 
 chown -R www-data:www-data /data
-su -c 'cd $GHOST_HOME/current && knex-migrator init' www-data
+#su -c 'cd $GHOST_HOME/current && knex-migrator init' www-data
 su -c 'cd $GHOST_HOME/current && npm start' www-data

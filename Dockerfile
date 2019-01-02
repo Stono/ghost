@@ -32,7 +32,7 @@ WORKDIR $GHOST_HOME
 RUN npm install -g ghost-cli@latest
 RUN chown -R www-data:www-data $GHOST_HOME
 USER www-data
-RUN ghost install local --no-setup --db sqlite3 --v1
+RUN ghost install local --no-setup --db sqlite3
  
 USER root
 
@@ -45,7 +45,6 @@ CMD ["/usr/local/bin/run.sh"]
 
 # Add static content generator
 RUN npm install -g ghost-static-site-generator
-RUN npm install -g knex-migrator
 
 RUN mkdir -p /usr/local/etc/ghost/patches
 COPY patches/ /usr/local/etc/ghost/patches/
