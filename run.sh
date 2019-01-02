@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e
 
-if [ ! -f "$GHOST_CONFIG" ]; then
-  echo Error: No config found at "$GHOST_CONFIG"!  Using default
-  cp /usr/local/etc/ghost/config.js.default $GHOST_CONFIG
-fi
-
 # Go through the patches
 PATCHES="/usr/local/etc/ghost/patches/*.patch"
 for patch in $PATCHES
@@ -18,4 +13,5 @@ do
 done
 
 chown -R www-data:www-data /data
-su -c 'npm start --production' www-data
+su -c 'cd $GHOST_HOME/current && knex-migrator init' www-data
+su -c 'cd $GHOST_HOME/current && npm start' www-data
